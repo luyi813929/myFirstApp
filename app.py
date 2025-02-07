@@ -23,6 +23,14 @@ def get_standard_data(x):
 st.markdown("<h1 style='text-align: center; color: black;'>RWHs Financial Viability Predictor</h1",
             unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+    .stNumberInput input {
+        background-color: #C0DBF8;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 left, right = st.columns(2)
 with left:
     A = st.number_input('Water tariff (USD/m³)', max_value=24.0, min_value=0.1, step=0.01)
@@ -59,4 +67,12 @@ if st.button('Predicting'):
     df.columns = df.iloc[0]
     df.drop('variable_name', inplace=True)
     st.balloons()
-    st.table(df)
+    # st.table(df)
+
+    html_table = df.to_html(classes='table table-striped')
+    # 为表头添加背景色
+    html_table = html_table.replace('<thead>', '<thead style="background-color: #FB0046;">')  # 设置表头背景色为红色
+    # 为第一行添加背景色
+    html_table = html_table.replace('<tr>', '<tr style="background-color: #1A72DE;">', 1)  # 设置第一行背景色为蓝色
+    # 在 Streamlit 中显示 HTML 表格
+    st.markdown(html_table, unsafe_allow_html=True)
