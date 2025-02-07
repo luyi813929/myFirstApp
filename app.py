@@ -62,10 +62,10 @@ if st.button('Predicting'):
             result = 'Invalid value'
         else:
             result = str(round(predictions[0], 2))
-        result_list.append({'variable_name': variable_name, 'predict_value': result})
+        result_list.append({'Variable Name': variable_name, 'Predict Value': result})
     df = pd.DataFrame(result_list).T
     df.columns = df.iloc[0]
-    df.drop('variable_name', inplace=True)
+    df.drop('Variable Name', inplace=True)
     st.balloons()
     # st.table(df)
 
