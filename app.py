@@ -71,8 +71,8 @@ if st.button('Predicting'):
 
     html_table = df.to_html(classes='table table-striped')
     # 为表头添加背景色
-    html_table = html_table.replace('<thead>', '<thead style="background-color: #FB0046;">')  # 设置表头背景色为红色
+    html_table = html_table.replace('<thead>', '<thead style="background-color: #FB82A0;">')  # 设置表头背景色为红色
     # 为第一行添加背景色
-    html_table = html_table.replace('<tr>', '<tr style="background-color: #1A72DE;">', 1)  # 设置第一行背景色为蓝色
+    html_table = html_table.replace('<tr>', '<tr style="background-color: #3C91FF;">', 1)  # 设置第一行背景色为蓝色
     # 在 Streamlit 中显示 HTML 表格
     st.markdown(html_table, unsafe_allow_html=True)
